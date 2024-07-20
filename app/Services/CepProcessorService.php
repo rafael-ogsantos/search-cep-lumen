@@ -19,6 +19,8 @@ class CepProcessorService
         $responses = [];
 
         foreach ($cepArray as $cep) {
+            $cep = str_replace('-', '', trim($cep));
+
             $validator = Validator::make(['cep' => $cep], [
                 'cep' => 'required|string|regex:/^[0-9]{8}$/',
             ]);
